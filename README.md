@@ -1,109 +1,127 @@
-# HEPATIQ — Soporte clínico hepatobiliar
+# HEPATIQ — Mobile App (PWA)
 
-App de soporte clínico para oncólogos basada en **NCCN Hepatobiliary v5.2021**.
+App **full-screen móvil** de soporte clínico hepatobiliar para oncólogos. Diseñada para acceso vía QR durante ponencias, con experiencia de app nativa en el móvil.
+
+Basada en **NCCN Hepatobiliary v5.2021**.
+
+---
+
+## 📱 Características mobile
+
+- ✅ **Full-screen sin frame** — ocupa toda la pantalla del móvil
+- ✅ **PWA instalable** — se puede añadir a la pantalla de inicio y se abre como app nativa
+- ✅ **Safe-area aware** — respeta notch y home indicator en iPhones
+- ✅ **Theme color** — la barra de estado se tiñe del color de la app
+- ✅ **Sin zoom accidental** — comportamiento app-like
+- ✅ **Bottom navigation fija** — siempre accesible
+
+---
 
 ## 🚀 Cómo desplegar en GitHub Pages (3 minutos)
 
-Esta versión está **pre-compilada**. No necesitas Node, ni workflows, ni nada. Solo subir archivos y configurar Pages.
+### Paso 1 — Limpia tu repo `astragastro`
 
-### Paso 1 — Limpia tu repo actual
+Si ya tienes archivos del intento anterior, bórralos:
 
-Si tu repo `astragastro` ya tiene contenido del intento anterior, **bórralo todo**:
-
-1. Ve a tu repo en GitHub.
-2. Por cada archivo/carpeta → click en el archivo → icono papelera 🗑️ → Commit.
-3. O más rápido desde terminal:
-   ```bash
-   cd /ruta/a/tu/repo
-   git rm -rf .
-   git commit -m "Limpiar repo"
-   git push
-   ```
-
-### Paso 2 — Sube TODOS los archivos de este zip
-
-Descomprime el zip y sube **todo el contenido** (no la carpeta, solo lo de dentro) a la raíz de tu repo:
-
-```
-astragastro/
-├── index.html        ← raíz del repo
-├── favicon.svg
-├── .nojekyll         ← MUY IMPORTANTE, archivo oculto
-├── assets/
-│   ├── index-XXX.js
-│   └── index-XXX.css
-├── source/           ← código fuente (por si quieres modificar luego)
-└── README.md
-```
-
-**⚠️ Aviso importante sobre el archivo `.nojekyll`:**
-
-Es un archivo oculto (empieza por punto). En **Mac Finder** está oculto por defecto:
-- Pulsa **Cmd + Shift + .** en Finder para mostrar archivos ocultos.
-- Asegúrate de que `.nojekyll` está subido al repo.
-- Si lo subes por la web de GitHub (drag & drop), tienes que tener los ocultos visibles.
-
-**Alternativa más segura desde terminal:**
 ```bash
-cd /ruta/a/tu/repo
-# Copia todo lo de este zip a la raíz
-git add -A
-git commit -m "Deploy HEPATIQ pre-compilado"
+cd ~/ruta/a/tu/repo/astragastro
+git rm -rf .
+git commit -m "Limpiar repo"
 git push
 ```
 
-### Paso 3 — Configura GitHub Pages
+### Paso 2 — Sube TODO el contenido del zip a la raíz del repo
 
-1. Ve a tu repo → **Settings** → **Pages**.
-2. En **Source**, selecciona: **Deploy from a branch**.
-3. En **Branch**, selecciona: **main** y carpeta **/ (root)**.
-4. Click **Save**.
+Descomprime el zip. Verás una carpeta `astragastro-deploy/`. Coge **todo lo de dentro** (no la carpeta, solo lo de dentro) y mételo en la raíz de tu repo.
 
-### Paso 4 — Espera 1-2 minutos
+**🚨 Archivo oculto crítico:** El `.nojekyll` es un archivo oculto. En Finder pulsa **Cmd + Shift + .** para verlo. Sin él, GitHub Pages romperá los assets.
 
-GitHub Pages tarda un poco en publicar el primer deploy. Refresca `https://nestorguerra.github.io/astragastro/` después de un par de minutos.
+Desde terminal (más fácil):
+```bash
+cd ~/ruta/a/tu/repo/astragastro
+# Copia AQUÍ todo el contenido de astragastro-deploy/ (incluido .nojekyll)
+git add -A
+git commit -m "Deploy HEPATIQ mobile PWA"
+git push
+```
+
+### Paso 3 — Configura Pages
+
+Repo → **Settings** → **Pages**:
+- **Source:** `Deploy from a branch`
+- **Branch:** `main`, carpeta `/ (root)`
+- **Save**
+
+### Paso 4 — Espera 1-2 minutos y prueba
+
+URL: `https://nestorguerra.github.io/astragastro/`
 
 ---
 
-## ✅ ¿Cómo saber si va bien?
+## 🎯 Para usar en la ponencia con QR
 
-Si abres la URL y sigues viendo pantalla blanca:
+1. **Genera el QR** apuntando a `https://nestorguerra.github.io/astragastro/` 
+   - Recomiendo qr-code-generator.com o similar.
+2. **Mete el QR en una slide** al inicio de tu charla.
+3. La audiencia escanea con la cámara → se abre en su navegador móvil.
+4. **Opcional**: pueden pulsar "Compartir → Añadir a pantalla de inicio" (iOS) o "Instalar app" (Android Chrome) → se instala como app nativa con icono propio.
 
-1. **Abre DevTools** (F12 o Cmd+Opt+I) → pestaña **Console**.
-2. Si ves error `404` para los archivos `.js` o `.css` → falta el `.nojekyll`. Revisa el Paso 2.
-3. Si ves error `MIME type` → mismo problema, `.nojekyll` no está subido.
-4. Si la pestaña **Network** muestra los `.js` cargando con `200 OK` y aún así está blanco → mándame captura de la Console.
+### Demo flow sugerido durante la ponencia
+
+1. "Soy oncólogo, viene un paciente nuevo" → **+** → registrar paciente con TNM
+2. "Necesito estratificar su función hepática" → **Calc** → Child-Pugh
+3. "El paciente tiene mutación FGFR2" → **Régimen** → filtras y aparece Pemigatinib/Infigratinib
+4. "Mira la categoría NCCN de cada recomendación" → badges visibles
 
 ---
 
-## 🛠 Cómo modificar el código (opcional)
+## 📁 Archivos del deploy
 
-Si quieres cambiar algo (textos, paleta, regímenes, etc.) tienes el código fuente en la carpeta `source/`.
+```
+astragastro/                  ← raíz de tu repo
+├── index.html                ← App pre-compilada
+├── favicon.svg
+├── apple-touch-icon.png      ← Icono para iOS (180x180)
+├── icon-192.png              ← Icono Android
+├── icon-512.png              ← Icono Android HD
+├── manifest.json             ← PWA manifest
+├── .nojekyll                 ← Bypass Jekyll (CRÍTICO)
+├── assets/
+│   ├── index-XXX.js          ← React app compilada
+│   └── index-XXX.css         ← Estilos compilados
+├── source/                   ← Código fuente (por si quieres modificar)
+└── README.md
+```
+
+---
+
+## 🛠 Cómo modificar el código
 
 ```bash
 cd source
 npm install
-npm run dev       # Servidor local en http://localhost:5173
-# ...editas src/App.jsx...
-npm run build     # Genera /dist con la nueva versión
+npm run dev        # http://localhost:5173
+# ...edita src/App.jsx...
+npm run build
+# Copia source/dist/* a la raíz del repo
+git add -A && git commit -m "Update app" && git push
 ```
-
-Después copias el contenido de `source/dist/` a la raíz del repo (reemplazando `index.html`, `assets/`, etc.) y haces push.
 
 ---
 
-## 📋 Funcionalidades
+## 📋 Funcionalidades clínicas
 
-- ✅ Registro de pacientes con TNM (AJCC 8ª ed.)
-- ✅ Calculadoras Child-Pugh, MELD y Milán/UNOS
-- ✅ Selector de régimen filtrado por Child-Pugh + biomarcadores
-- ✅ FGFR2, IDH1, MSI-H, dMMR, NTRK, BRAF-V600E, TMB-H, AFP
+- ✅ Registro pacientes con TNM (AJCC 8ª ed.): HCC, vesícula, colangio intra/extra
+- ✅ Calculadoras: **Child-Pugh, MELD, Milán/UNOS**
+- ✅ Selector de régimen con filtrado por Child-Pugh + biomarcadores
+- ✅ Biomarcadores: **FGFR2, IDH1, MSI-H, dMMR, NTRK, BRAF-V600E, TMB-H, AFP**
 - ✅ Categoría NCCN (1, 2A, 2B, 3) en cada recomendación
+- ✅ Vista detalle paciente con timeline
 
 ---
 
 ## ⚖️ Aviso
 
-Demo educativo basado en NCCN Hepatobiliary v5.2021. No sustituye al juicio clínico.
+Demo educativo basado en NCCN Hepatobiliary v5.2021. No sustituye al juicio clínico ni a la consulta con un especialista.
 
 **© 2026 NCompany — Madrid**

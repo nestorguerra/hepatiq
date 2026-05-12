@@ -1810,150 +1810,48 @@ export default function App() {
                     screen;
 
   return (
-    <div className="min-h-screen w-full bg-gradient-to-br from-slate-100 via-stone-100 to-teal-50 flex items-center justify-center p-4 sm:p-8" style={{ fontFamily: 'Plus Jakarta Sans, system-ui, sans-serif' }}>
+    <div className="min-h-screen w-full bg-gradient-to-br from-stone-50 via-white to-teal-50/30 flex flex-col" style={{ fontFamily: 'Plus Jakarta Sans, system-ui, sans-serif' }}>
       
-      <div className="w-full max-w-7xl grid lg:grid-cols-[1fr_auto_1fr] gap-8 items-center">
+      {/* Contenedor central — full-width en móvil, centrado en desktop */}
+      <div className="w-full max-w-md mx-auto flex-1 flex flex-col relative">
         
-        {/* Left side - Branding */}
-        <div className="hidden lg:block">
-          <div className="flex items-center gap-2 mb-6">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-teal-700 to-teal-900 flex items-center justify-center">
-              <Activity className="w-5 h-5 text-white" />
-            </div>
-            <div>
-              <p className="font-bold text-slate-900 leading-none" style={{ fontFamily: 'Fraunces, serif' }}>HEPATIQ</p>
-              <p className="text-[10px] text-slate-500 tracking-widest uppercase">Clinical Support</p>
-            </div>
-          </div>
-          <h2 className="text-5xl leading-tight text-slate-900 mb-4" style={{ fontFamily: 'Fraunces, serif' }}>
-            Decisión clínica<br /><em className="text-teal-700">basada en NCCN.</em>
-          </h2>
-          <p className="text-slate-600 leading-relaxed mb-6">
-            Soporte clínico móvil para oncólogos. Estratificación, calculadoras y selección 
-            de regímenes para HCC, vesícula y colangiocarcinoma — todo según las guías 
-            NCCN Hepatobiliary v5.2021.
-          </p>
-          <div className="space-y-3">
-            {[
-              { icon: Calculator, text: 'Child-Pugh, MELD, Milán/UNOS' },
-              { icon: Dna, text: 'Filtrado por FGFR2, IDH1, MSI-H, NTRK' },
-              { icon: ShieldCheck, text: 'Categoría NCCN en cada recomendación' },
-              { icon: Stethoscope, text: 'Workflow real para consulta oncológica' },
-            ].map((f, i) => (
-              <div key={i} className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-lg bg-white border border-slate-200 flex items-center justify-center shrink-0">
-                  <f.icon className="w-4 h-4 text-teal-700" />
-                </div>
-                <p className="text-sm text-slate-700">{f.text}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Phone Frame */}
-        <div className="mx-auto">
-          {/* Mobile branding (only visible on small screens) */}
-          <div className="lg:hidden flex items-center gap-2 mb-4 justify-center">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-teal-700 to-teal-900 flex items-center justify-center">
-              <Activity className="w-4 h-4 text-white" />
-            </div>
-            <div>
-              <p className="font-bold text-slate-900 leading-none text-sm" style={{ fontFamily: 'Fraunces, serif' }}>HEPATIQ</p>
-              <p className="text-[9px] text-slate-500 tracking-widest uppercase">Clinical Support</p>
-            </div>
-          </div>
-
-          <div className="relative" style={{ width: '390px', maxWidth: '92vw' }}>
-            {/* Phone shadow */}
-            <div className="absolute inset-0 bg-slate-900/20 rounded-[3rem] blur-2xl translate-y-8 scale-95"></div>
-            
-            {/* Phone body */}
-            <div className="relative bg-slate-900 rounded-[3rem] p-2 shadow-2xl">
-              <div className="bg-gradient-to-br from-stone-50 via-white to-teal-50/30 rounded-[2.5rem] overflow-hidden relative" style={{ height: '780px' }}>
-                
-                {/* Status bar */}
-                <div className="flex items-center justify-between px-7 pt-3 pb-2 bg-transparent relative z-10">
-                  <span className="text-xs font-bold text-slate-900">9:41</span>
-                  <div className="absolute left-1/2 -translate-x-1/2 top-2 w-28 h-6 bg-slate-900 rounded-full"></div>
-                  <div className="flex items-center gap-1">
-                    <svg width="16" height="11" viewBox="0 0 16 11" fill="currentColor" className="text-slate-900"><path d="M14.5 0h-.5a1 1 0 00-1 1v9a1 1 0 001 1h.5a1 1 0 001-1V1a1 1 0 00-1-1zM10.5 2h-.5a1 1 0 00-1 1v7a1 1 0 001 1h.5a1 1 0 001-1V3a1 1 0 00-1-1zM6.5 4H6a1 1 0 00-1 1v5a1 1 0 001 1h.5a1 1 0 001-1V5a1 1 0 00-1-1zM2.5 6H2a1 1 0 00-1 1v3a1 1 0 001 1h.5a1 1 0 001-1V7a1 1 0 00-1-1z"/></svg>
-                    <svg width="15" height="11" viewBox="0 0 15 11" fill="currentColor" className="text-slate-900"><path d="M7.5 1.5a8 8 0 015.5 2.2.5.5 0 00.7 0l.7-.7a.5.5 0 000-.7A10 10 0 007.5 0 10 10 0 00.5 2.3a.5.5 0 000 .7l.7.7a.5.5 0 00.7 0A8 8 0 017.5 1.5zm0 3a5 5 0 013.5 1.5.5.5 0 00.7 0l.7-.7a.5.5 0 000-.7A7 7 0 007.5 3 7 7 0 002.6 4.6a.5.5 0 000 .7l.7.7a.5.5 0 00.7 0A5 5 0 017.5 4.5zm0 3a2 2 0 011.5.7.5.5 0 00.7 0l.7-.7a.5.5 0 000-.7A4 4 0 007.5 6a4 4 0 00-2.9 1.3.5.5 0 000 .7l.7.7a.5.5 0 00.7 0A2 2 0 017.5 7.5zM7.5 9a1.5 1.5 0 100 3 1.5 1.5 0 000-3z"/></svg>
-                    <div className="ml-1 relative w-6 h-2.5 border border-slate-900 rounded-sm">
-                      <div className="absolute inset-0.5 bg-slate-900 rounded-[1px]" style={{ width: '70%' }}></div>
-                      <div className="absolute -right-0.5 top-1/2 -translate-y-1/2 w-0.5 h-1 bg-slate-900 rounded-r"></div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Screen content */}
-                <div className="overflow-y-auto" style={{ height: 'calc(780px - 36px)' }}>
-                  {renderScreen()}
-                </div>
-
-                {/* Bottom Nav */}
-                <div className="absolute bottom-0 left-0 right-0 bg-white/95 backdrop-blur-xl border-t border-slate-200">
-                  <div className="grid grid-cols-4 px-3 pt-2 pb-6">
-                    {[
-                      { id: 'home', icon: Users, label: 'Pacientes' },
-                      { id: 'calculators', icon: Calculator, label: 'Calc' },
-                      { id: 'treatment', icon: Pill, label: 'Régimen' },
-                      { id: 'guide', icon: BookOpen, label: 'Guía' },
-                    ].map(t => (
-                      <button 
-                        key={t.id}
-                        onClick={() => setScreen(t.id)}
-                        className={`flex flex-col items-center gap-0.5 py-1 rounded-xl ${navScreen === t.id ? 'text-teal-700' : 'text-slate-400'}`}
-                      >
-                        <t.icon className={`w-5 h-5 ${navScreen === t.id ? 'stroke-[2.5]' : ''}`} />
-                        <span className="text-[10px] font-medium">{t.label}</span>
-                      </button>
-                    ))}
-                  </div>
-                  {/* Home indicator */}
-                  <div className="absolute bottom-1.5 left-1/2 -translate-x-1/2 w-32 h-1 bg-slate-900 rounded-full"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Right side - Stats / NCCN reference */}
-        <div className="hidden lg:block">
-          <div className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-3xl p-6 text-white mb-4 relative overflow-hidden">
-            <div className="absolute -right-6 -top-6 w-32 h-32 bg-teal-500/20 rounded-full blur-2xl"></div>
-            <p className="text-[10px] opacity-60 tracking-widest uppercase mb-1">NCCN Guidelines</p>
-            <p className="text-2xl font-bold leading-tight mb-3" style={{ fontFamily: 'Fraunces, serif' }}>
-              Hepatobiliary Cancers<br />v5.2021
-            </p>
-            <p className="text-xs opacity-70 leading-relaxed">
-              162 páginas de guías clínicas destiladas en una experiencia móvil 
-              diseñada para la consulta del oncólogo.
-            </p>
-          </div>
-
-          <div className="bg-white rounded-3xl p-5 border border-slate-200 shadow-sm mb-4">
-            <p className="text-[10px] font-semibold text-slate-500 tracking-widest uppercase mb-3">Categorías de evidencia</p>
-            <div className="space-y-2">
-              {Object.entries(NCCN_CATEGORIES).map(([k, v]) => (
-                <div key={k} className="flex items-start gap-2">
-                  <NCCNBadge category={k} />
-                  <p className="text-[11px] text-slate-600 leading-tight pt-0.5">{v.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="bg-white rounded-3xl p-5 border border-slate-200 shadow-sm">
-            <p className="text-[10px] font-semibold text-slate-500 tracking-widest uppercase mb-3">Biomarcadores cubiertos</p>
-            <div className="flex flex-wrap gap-1.5">
-              {['FGFR2','IDH1','MSI-H','dMMR','NTRK','BRAF-V600E','TMB-H','AFP'].map(b => (
-                <BiomarkerChip key={b} name={b} />
-              ))}
-            </div>
-          </div>
+        {/* Contenido scrolleable */}
+        <div 
+          className="flex-1 overflow-y-auto"
+          style={{ 
+            paddingTop: 'env(safe-area-inset-top)',
+            paddingBottom: 'calc(5rem + env(safe-area-inset-bottom))'
+          }}
+        >
+          {renderScreen()}
         </div>
 
       </div>
+
+      {/* Bottom Nav fijo — siempre abajo */}
+      <div 
+        className="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-xl border-t border-slate-200 z-50"
+        style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
+      >
+        <div className="grid grid-cols-4 px-3 pt-2 pb-2 max-w-md mx-auto">
+          {[
+            { id: 'home', icon: Users, label: 'Pacientes' },
+            { id: 'calculators', icon: Calculator, label: 'Calc' },
+            { id: 'treatment', icon: Pill, label: 'Régimen' },
+            { id: 'guide', icon: BookOpen, label: 'Guía' },
+          ].map(t => (
+            <button 
+              key={t.id}
+              onClick={() => setScreen(t.id)}
+              className={`flex flex-col items-center gap-0.5 py-2 rounded-xl transition-colors ${navScreen === t.id ? 'text-teal-700' : 'text-slate-400'}`}
+            >
+              <t.icon className={`w-5 h-5 ${navScreen === t.id ? 'stroke-[2.5]' : ''}`} />
+              <span className="text-[10px] font-medium">{t.label}</span>
+            </button>
+          ))}
+        </div>
+      </div>
+
     </div>
   );
 }

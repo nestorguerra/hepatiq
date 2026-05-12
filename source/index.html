@@ -3,9 +3,27 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+    
+    <!-- Viewport optimizado para móvil con safe areas (notch) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no" />
+    
+    <!-- Theme color (barra de estado en Android/Chrome) -->
     <meta name="theme-color" content="#0f766e" />
-    <meta name="description" content="HEPATIQ - Soporte clínico para oncólogos basado en las guías NCCN Hepatobiliary v5.2021. Estratificación, calculadoras y selección de regímenes para HCC, vesícula y colangiocarcinoma." />
+    
+    <!-- PWA: comportamiento app-like en iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="HEPATIQ" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    
+    <!-- Apple touch icon (para añadir a pantalla de inicio) -->
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+    
+    <!-- Manifest PWA -->
+    <link rel="manifest" href="./manifest.json" />
+    
+    <!-- Descripción y SEO -->
+    <meta name="description" content="HEPATIQ - Soporte clínico para oncólogos basado en NCCN Hepatobiliary v5.2021. Estratificación, calculadoras y selección de regímenes para HCC, vesícula y colangiocarcinoma." />
     
     <!-- Open Graph -->
     <meta property="og:title" content="HEPATIQ — Clinical Decision Support" />

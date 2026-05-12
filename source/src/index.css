@@ -5,18 +5,51 @@
 html, body, #root {
   margin: 0;
   padding: 0;
-  min-height: 100vh;
   font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Soporte safe-area iOS/Android */
+  overscroll-behavior-y: contain;
+}
+
+html, body {
+  /* Permite que el contenido use toda la altura, incluyendo notch */
+  min-height: 100%;
+  min-height: 100dvh;
+  background: #fafaf9;
+}
+
+#root {
+  min-height: 100vh;
+  min-height: 100dvh;
 }
 
 * {
   box-sizing: border-box;
+  /* Mejora tap response en móviles */
+  -webkit-tap-highlight-color: transparent;
 }
 
-/* Scrollbar styling para el "device" */
-.device-scroll::-webkit-scrollbar {
+/* Ocultar scrollbar pero mantener funcionalidad */
+*::-webkit-scrollbar {
   width: 0;
+  height: 0;
   background: transparent;
+}
+
+/* Prevenir zoom on focus en iOS para inputs */
+input, textarea, select, button {
+  font-size: 16px;
+}
+
+@media (min-width: 380px) {
+  input, textarea, select, button {
+    font-size: inherit;
+  }
+}
+
+/* Asegurar que los buttons no tengan estilos por defecto raros en iOS */
+button {
+  -webkit-appearance: none;
+  appearance: none;
 }
